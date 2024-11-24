@@ -6,7 +6,26 @@ services :
     build : 
       context : .
     ports : 
-      - "4001:4001"
+      - "4001"
+    networks : 
+     - proyectos-app
+
+  microservicio-2:
+    container_name : microservicio-2
+    image : microservicio:v1
+    ports : 
+      - "4001"
+    networks : 
+     - proyectos-app
+
+
+  balanceador-carga:
+    container_name : balanceador-carga
+    image : balanceador-carga:v1
+    build : 
+      context : ./balanceador
+    ports : 
+      - "4002:80"
     networks : 
      - proyectos-app
 

@@ -9,6 +9,7 @@ const router = Router();
 router.get('/', async (req, res) => {
     try {
         const proyectos = await Proyecto.find().populate('cliente tipo_proyecto universidad etapa');
+        console.log('Proyectos encontrados:', proyectos); // Depuración
         res.send(proyectos);
     } catch (error) {
         console.error(error);
